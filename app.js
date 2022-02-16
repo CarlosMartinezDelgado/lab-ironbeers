@@ -7,6 +7,7 @@ const PunkAPIWrapper = require('punkapi-javascript-wrapper');
 const app = express();
 const punkAPI = new PunkAPIWrapper();
 
+
 const randomBeer = punkAPI.getRandom()
 
 app.set('view engine', 'hbs');
@@ -48,11 +49,22 @@ app.get('/beers', (req, res) => {
     })
     .catch(error => console.log(error));
   });
-/*
+
   //RUTA DINAMICA
 
-  app.get("/beers/:beer", (req, res) => {
-    
-  })
-*/
+  // No hemos podido asociar el LINK de cada cerveza a su DESCRIPCION
+
+  app.get("/beers/:id", (req, res) => {
+    punkAPI.getBeer(req.params.id)   
+    .then(beersFromApi => {
+
+      res.render("random-beer.hbs", {
+        beersFromApi: beersFromApi
+      })
+  
+    })
+    .catch(error => console.log(error));
+  });
+
+
 app.listen(3000, () => console.log('🏃‍ on port 3000'));

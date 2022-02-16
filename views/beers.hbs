@@ -1,7 +1,7 @@
 {{#each beersFromApi}}
 <li>
     <img src="{{this.image_url}}" alt="Imagen Cerveza" width="50">
-    <p><a href="{{this}}">{{this.name}}</a></p>
+    <p><a href="/beers/beer{{this.id}}">{{this.name}}</a></p>
     <p>{{this.description}}</p>
     <p>{{this.tagline}}</p>
     
