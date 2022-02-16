@@ -40,7 +40,7 @@ app.get('/beers', (req, res) => {
    app.get('/random-beer', (req, res) => {
     punkAPI.getRandom()    
     .then(responseFromApi => {
-      console.log(responseFromApi)
+   //   console.log(responseFromApi)
       res.render("random-beer.hbs", {
         responseFromApi: responseFromApi
       })
@@ -48,5 +48,11 @@ app.get('/beers', (req, res) => {
     })
     .catch(error => console.log(error));
   });
+/*
+  //RUTA DINAMICA
 
+  app.get("/beers/:beer", (req, res) => {
+    
+  })
+*/
 app.listen(3000, () => console.log('🏃‍ on port 3000'));
